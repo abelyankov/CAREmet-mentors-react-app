@@ -13,9 +13,11 @@ class ReportItem extends React.Component {
                     <div class="description"></div>
                 </div>
                 <div class="extra content">
-                    
+
                 </div>
             </div>
         )
     }
 }
+
+export default ReportItem

@@ -1,13 +1,11 @@
 import React from 'react';
 
 import './App.css';
+import Sidebar from "./Sibebar";
 
 function App() {
   return (
-      <div class="ui segment" style={{margin: "20px"}}>
-        <button className="ui button" role="button">Учитесь, педики! </button>
-      </div>
-
+      <Sidebar/>
   );
 }
 

@@ -20,6 +20,7 @@ class MentorRequest {
         this.hobby = hobby;
         this.assigned = assigned;
         this.age = age;
+        this.aboutYourSelf = "Ya ochen' horoshiy metor potomu shto ya tasher"
     }
 }
 

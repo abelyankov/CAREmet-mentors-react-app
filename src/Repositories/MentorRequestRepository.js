@@ -8,13 +8,13 @@ class MentorRequestRepository {
         for(let i=0; i<10; i++ ){
             let  mentorRequest = new MentorRequest(
                 i,
-                "Serega",
-                "Sergeev",
-                "Almaty",
-                "87078364815",
-                "Prosto back-office",
-                "Programmer",
-                "Play games",
+                "Serega" + i,
+                "Sergeev"+ i,
+                "Almaty"+ i,
+                "87078364815"+ i,
+                "Prosto back-office"+ i,
+                "Programmer"+ i,
+                "Play games"+ i,
                 false,
                 24
             );

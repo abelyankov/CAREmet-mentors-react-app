@@ -1,11 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './styles/index.css';
-import App from './components/App';
-import * as serviceWorker from './serviceWorker';
-import reducer from './reducers'
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 
+import { store } from './helpers';
+import { App } from './App';
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+// setup fake backend
+import { configureFakeBackend } from './helpers';
+configureFakeBackend();
 
-serviceWorker.unregister();
+render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('app')
+);

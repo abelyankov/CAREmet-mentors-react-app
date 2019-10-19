@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom";
 
  class MentorRequestComponent extends React.Component {
     render() {
@@ -8,9 +9,9 @@ import React from 'react'
         return <div className="ui card">
             <div className="content">
 
-                <a className="header">
+                <Link to={`/mentorRequests/${mentorRequest.id}`} className="header">
                     {mentorRequest.name} {mentorRequest.surname}
-                </a>
+                </Link>
 
                 <div className="meta">
                     <span className="age"> {mentorRequest.age}</span>

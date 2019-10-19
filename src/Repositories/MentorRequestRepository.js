@@ -1,27 +1,31 @@
-import IMentorRequest from "../models/IMentorRequest";
-
+import MentorRequest from "../models/IMentorRequest";
 
 class MentorRequestRepository {
 
-    mentorRequestList = [] ;
+    constructor(){
+        let mentorRequestList = [];
 
-    init(){
         for(let i=0; i<10; i++ ){
-            this.mentorRequestList.push(
-                new IMentorRequest(
-                    i,
-                    "Serega",
-                    "Sergeev",
-                    "Almaty",
-                    "87078364815",
-                    "Prosto back-office",
-                    "Programmer",
-                    "Play games",
-                    false,
-                    24
-                )
+            let  mentorRequest = new MentorRequest(
+                i,
+                "Serega",
+                "Sergeev",
+                "Almaty",
+                "87078364815",
+                "Prosto back-office",
+                "Programmer",
+                "Play games",
+                false,
+                24
+            );
+
+            mentorRequestList.push(
+                mentorRequest
             )
+
         }
+
+        this.mentorRequestList = mentorRequestList
 
     }
 
@@ -36,8 +40,8 @@ class MentorRequestRepository {
             }
         });
 
-        return new IMentorRequest(
-            12,
+        return new MentorRequest(
+            10,
             "Serega",
             "Sergeev",
             "Almaty",
@@ -47,7 +51,7 @@ class MentorRequestRepository {
             "Play games",
             false,
             24
-        )
+        );
     }
 
 

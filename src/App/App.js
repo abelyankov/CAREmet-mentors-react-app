@@ -9,6 +9,8 @@ import { HomePage } from '../HomePage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
 import Reports from '../components/Reports';
+import MentorRequestListComponent from "../components/MentorRequestListComponent";
+import MentorRequestDetailsComponent from "../components/MentorRequestDetailsComponent";
 
 class App extends React.Component {
   constructor(props) {
@@ -35,6 +37,8 @@ class App extends React.Component {
                   <Route path="/login" component={LoginPage} />
                   <Route path="/register" component={RegisterPage} />
                   <Route path="/reports" component={Reports} />
+                  <Route path="/mentorRequests" component={MentorRequestListComponent} />
+                  <Route path="/mentorRequests/:number" component={MentorRequestDetailsComponent} />
                   <Redirect from="*" to="/" />
                 </Switch>
               </Router>

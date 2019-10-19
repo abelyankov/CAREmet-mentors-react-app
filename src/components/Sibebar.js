@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 function Sidebar() {
     const sideBarStyle = {
@@ -8,10 +7,10 @@ function Sidebar() {
     return (
         <div className="ui fixed vertical inverted menu"
              style ={sideBarStyle}>
-            <a className="item">
+            <a className="item" href='/profile'>
                 Профиль
             </a>
-            <a className="item">
+            <a className="item" href='/mentors'>
                 Наставники
             </a>
             <a className="item" href='/reports'>
@@ -19,8 +18,7 @@ function Sidebar() {
             </a>
             <a className="item" href='/login'>
                 Выйти
-            </a>   
-            {/* <Link to="/login">Logout</Link> */}
+            </a>
         </div>
     );
 }

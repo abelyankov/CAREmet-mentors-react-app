@@ -1,6 +1,5 @@
 import React from 'react'
 import ReportItem from './ReportItem'
-import reports from '../stubs/reports'
 import Sidebar from './Sibebar'
 
 class Reports extends React.Component {

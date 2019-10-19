@@ -1,8 +1,8 @@
 import React from 'react'
 
-class ReportItem extends React.Component {
-    render() {
-        const { status, title, date, text, sender, event_title} = this.props.props;
+function ReportItem(props) {
+
+        const { status, title, date, text, sender, event_title} = props.props;
         
         return(
             <div className="ui card">
@@ -23,7 +23,6 @@ class ReportItem extends React.Component {
                 </div>
             </div>
         )
-    }
 }
 
 export default ReportItem

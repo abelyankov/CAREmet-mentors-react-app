@@ -26,7 +26,6 @@ class Reports extends React.Component {
     }
     
     render() {
-        console.log(this.state.data)
         return(
             <div style={{ margin: '50px 0 0 200px' }}>
                 <Sidebar /> 

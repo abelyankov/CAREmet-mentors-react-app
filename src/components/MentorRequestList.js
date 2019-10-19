@@ -1,6 +1,5 @@
 import React from "react";
-import Switch from "react-router-dom/es/Switch";
-import Route from "react-router-dom/es/Route";
+import {Switch, Route} from "react-router-dom";
 import MentorRequestListComponent from "./MentorRequestListComponent";
 import MentorRequestDetailsComponent from "./MentorRequestDetailsComponent";
 

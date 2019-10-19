@@ -1,4 +1,5 @@
 const reports = [{
+    key: 1,
     status: 'applied',
     title: 'Отчет по первой встрече с ребенком',
     date: '29 Sep 13:35',
@@ -6,6 +7,7 @@ const reports = [{
     sender: 'Rustam Aitakhunov',
     event_title: 'Ежемесячный тренинг наставников Запланированый ежемесячный тренинг'
 },{
+    key: 2,
     status: 'approved',
     title: 'Отчет по первой встрече с ребенком',
     date: '29 Sep 13:35',
@@ -13,6 +15,7 @@ const reports = [{
     sender: 'Rustam Aitakhunov',
     event_title: 'Ежемесячный тренинг наставников Запланированый ежемесячный тренинг'
 },{
+    key: 3,
     status: 'rejected',
     title: 'Отчет по первой встрече с ребенком',
     date: '29 Sep 13:35',

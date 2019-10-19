@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Sidebar from '../components/Sibebar';
 
@@ -15,14 +14,12 @@ class HomePage extends React.Component {
     }
 
     render() {
-        const { user, users } = this.props;
+        const { user } = this.props;
         return (
-            
             <div>
                 <Sidebar />
                 <div style={{ margin: '50px 0 0 200px' }}>  
                     <h1>Добрый день, {user.firstName}!</h1>
-                    
                 </div>
                
                 
@@ -58,7 +55,7 @@ function mapState(state) {
 const actionCreators = {
     getUsers: userActions.getAll,
     deleteUser: userActions.delete
-}
+};
 
 const connectedHomePage = connect(mapState, actionCreators)(HomePage);
 export { connectedHomePage as HomePage };

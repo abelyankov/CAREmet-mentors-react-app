@@ -1,6 +1,5 @@
 import React from 'react'
 import ReportItem from './ReportItem'
-import reports from '../stubs/reports'
 import Sidebar from './Sibebar'
 
 class Reports extends React.Component {
@@ -13,7 +12,6 @@ class Reports extends React.Component {
                     
                 </div>
                 <div className="ui cards">
-                    {/* reports.map(v => <ReportItem v />) */}
                     <ReportItem />
                 </div>
             </div>   

@@ -7,6 +7,9 @@ function Sidebar() {
     return (
         <div className="ui fixed vertical inverted menu"
              style ={sideBarStyle}>
+            <a className="item" href="/">
+                Главная
+            </a>
             <a className="item" href='/profile'>
                 Профиль
             </a>

@@ -9,6 +9,7 @@ import { HomePage } from '../HomePage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
 import Reports from '../components/Reports';
+import { ProfilePage }  from "../ProfilePage";
 import MentorRequestListComponent from "../components/MentorRequestListComponent";
 import MentorRequestDetailsComponent from "../components/MentorRequestDetailsComponent";
 
@@ -34,8 +35,10 @@ class App extends React.Component {
               <Router history={history}>
                 <Switch>
                   <PrivateRoute exact path="/" component={HomePage} />
-                  <Route path="/login" component={LoginPage} />
+                  <Route path="/login" component={ LoginPage } />
                   <Route path="/register" component={RegisterPage} />
+                  <Route path="/reports" component={ Reports } />
+                  <Route path="/profile" component={ ProfilePage }/>
                   <Route path="/reports" component={Reports} />
                   <Route path="/mentorRequests" component={MentorRequestListComponent} />
                   <Route path="/mentorRequests/:number" component={MentorRequestDetailsComponent} />

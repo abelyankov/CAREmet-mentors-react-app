@@ -2,7 +2,6 @@ import React from 'react'
 import ReportItem from './ReportItem'
 import reports from '../stubs/reports'
 import Sidebar from './Sibebar'
-import reports from '../stubs/reports'
 class Reports extends React.Component {
 
     constructor(props){

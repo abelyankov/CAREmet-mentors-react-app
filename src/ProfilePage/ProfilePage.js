@@ -14,14 +14,18 @@ class ProfilePage extends  React.Component {
                 <h1> Профиль </h1>
                 <div className="ui segment" style={{background: "rgba(0,0,0,0.03)", margin: "20px"}}>
                     <table className="ui very basic compact table">
+                        <tbody>
                         <tr>
-                            <td style={{width: "180px"}}>Имя и фамилия:</td>
+                            <td style={{width: "180px"}}>
+                                Имя и фамилия:
+                            </td>
                             <td> {user.firstName} {user.lastName}</td>
                         </tr>
                         <tr>
                             <td style={{width: "180px"}}>Имя пользователя:</td>
                             <td> {user.username} </td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Sidebar from '../components/Sibebar';
 
 import { userActions } from '../actions';
 
@@ -16,9 +17,16 @@ class HomePage extends React.Component {
     render() {
         const { user, users } = this.props;
         return (
-            <div className="">
-                <h1>Hi {user.firstName}!</h1>
-                <p>You're logged in with React!!</p>
+            
+            <div>
+                <Sidebar />
+                <div style={{ margin: '50px 0 0 200px' }}>  
+                    <h1>Добрый день, {user.firstName}!</h1>
+                    
+                </div>
+               
+                
+                {/* <p>You're logged in with React!!</p>
                 <h3>All registered users:</h3>
                 {users.loading && <em>Loading users...</em>}
                 {users.error && <span className="text-danger">ERROR: {users.error}</span>}
@@ -35,10 +43,7 @@ class HomePage extends React.Component {
                         </li>
                     )}
                 </ul>
-                }
-                <p>
-                    <Link to="/login">Logout</Link>
-                </p>
+                } */}w
             </div>
         );
     }

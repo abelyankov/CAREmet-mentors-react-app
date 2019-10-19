@@ -21,12 +21,12 @@ class HomePage extends React.Component {
                 <Sidebar />
                 <div style={{ margin: '50px 0 0 200px' }}>  
                     <h1>Добрый день, {user.firstName}!</h1>
-                    <div className="ui grid" style={{display: "flex", margin: '10px'}}>
-                        <div className="eight wide column">
-                            <MentorsMentorRequestListComponent />
-                        </div>
+                    <div className="ui grid">
                         <div className="eight wide column">
                             <Reports />
+                        </div>
+                        <div className="eight wide column">
+                            <MentorsMentorRequestListComponent />
                         </div>
                     </div>   
                 </div>

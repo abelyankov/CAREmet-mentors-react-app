@@ -26,13 +26,15 @@ class Reports extends React.Component {
     
     render() {
         return(
-            <div style={{ margin: '50px 0 0 200px' }}>
-                <Sidebar /> 
-                <h1> Отчёты </h1>
-                <div className="ui cards">
-                    {this.state.data.map(v => <ReportItem key={v.key} props={v} />)}
+            <div>
+                <Sidebar />
+                <div style={{ margin: '50px 0 0 200px' }}>
+                    <h1> Отчёты </h1>
+                    <div className="ui cards">
+                        {this.state.data.map(v => <ReportItem key={v.key} props={v} />)}
+                    </div>
                 </div>
-            </div>   
+            </div>
         )
     }
 }

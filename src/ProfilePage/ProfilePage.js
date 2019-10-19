@@ -3,10 +3,9 @@ import Sidebar from '../components/Sibebar'
 import { userActions } from '../actions';
 import { connect } from 'react-redux';
 
-class ProfilePage extends  React.Component {
-
-    render() {
-        const { user } = this.props;
+function ProfilePage(props){
+    
+        const { user } = props;
         console.log(user);
         return (
             <div style={{margin: '50px 0 0 200px'}}>
@@ -30,7 +29,6 @@ class ProfilePage extends  React.Component {
                 </div>
             </div>
         )
-    }
 }
 
 function mapState(state) {

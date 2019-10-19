@@ -24,4 +24,4 @@ class MentorRequest {
     }
 }
 
-export default {MentorRequest}
+export default MentorRequest

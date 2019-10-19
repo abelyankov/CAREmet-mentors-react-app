@@ -1,8 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-export default class MentorRequestComponent extends React.Component {
-
+ class MentorRequestComponent extends React.Component {
     render() {
 
         const {mentorRequest} = this.props;
@@ -44,3 +42,5 @@ export default class MentorRequestComponent extends React.Component {
 
     }
 }
+
+export default MentorRequestComponent

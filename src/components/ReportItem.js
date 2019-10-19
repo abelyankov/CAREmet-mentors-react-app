@@ -2,11 +2,11 @@ import React from 'react'
 
 class ReportItem extends React.Component {
     render() {
-        const { status, title, date, text, sender, event_title} = this.props.props
+        const { status, title, date, text, sender, event_title} = this.props.props;
         
         return(
             <div className="ui card">
-                {status == 'approved' ?
+                {status === 'approved' ?
                 <div className="ui green top attached label" style={{text_align: "center"}}>
                     Одобрен
                 </div>:  

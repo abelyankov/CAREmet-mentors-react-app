@@ -12,6 +12,7 @@ import Reports from '../components/Reports';
 import { ProfilePage }  from "../ProfilePage";
 import MentorRequestsRoutes from "../components/MentorRequestList";
 import {firebaseAuth} from "../firebase/FireBaseConnectr";
+import ReportCreate from "../components/ReportCreate";
 
 class App extends React.Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class App extends React.Component {
                   <Route path="/reports" component={ Reports } />
                   <Route path="/profile" component={ ProfilePage }/>
                   <Route path="/reports" component={Reports} />
+                  <Route path="/create" component = {ReportCreate}/>
                   <Route path="/mentorRequests" component={MentorRequestsRoutes} />
                   <Redirect from="*" to="/" />
                 </Switch>

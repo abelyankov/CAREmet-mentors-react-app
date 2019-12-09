@@ -37,16 +37,11 @@ export default class ReportCreate extends React.Component {
             text: value
         })
     };
-    senderHandler = (event) => {
-        const value = event.currentTarget.value;
-        this.setState({
-            sender: value
-        })
-    };
+
     eventTitleHandler = (event) => {
         const value = event.currentTarget.value;
         this.setState({
-            eventTitle: value
+            event_title: value
         })
     };
 
@@ -57,7 +52,9 @@ export default class ReportCreate extends React.Component {
         console.log(user.id);
         fetch(baseUrl + "users/" + user.id + "/reports", {
             method: "POST",
-            headers: {'Authorization': user.token},
+            headers: {'Authorization': user.token,
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(this.state)
         }).then(res => console.log(res))
             .catch(error => console.log(error))
@@ -77,7 +74,6 @@ export default class ReportCreate extends React.Component {
                     <input style={{padding: "16px", margin: "16px"}} type={"date"} placeholder={"date"} name={"date"} onChange={this.dateHandler} required />
                     <input style={{padding: "16px", margin: "16px"}} type={"text"} placeholder={"status"} name={"status"} onChange={this.statusHandler} required/>
                     <input style={{padding: "16px", margin: "16px"}} type={"text"} placeholder={"text"} name={"text"} onChange={this.textHandler}  required/>
-                    <input style={{padding: "16px", margin: "16px"}} type={"text"} placeholder={"sender"} name={"sender"} onChange={this.senderHandler}  required/>
                     <input style={{padding: "16px", margin: "16px"}} type={"text"} placeholder={"event title"} name={"event_title"} onChange={this.eventTitleHandler} required />
                     <input type={"submit"}/>
                 </form>

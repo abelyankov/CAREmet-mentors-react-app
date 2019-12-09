@@ -2,6 +2,7 @@ import { userConstants } from '../constants';
 import { userService } from '../services';
 import { alertActions } from './';
 import { history } from '../helpers';
+import {firebaseAuth} from "../firebase/FireBaseConnectr";
 
 export const userActions = {
     login,
@@ -13,19 +14,42 @@ export const userActions = {
 
 function login(username, password) {
     return dispatch => {
-        dispatch(request({ username }));
 
-        userService.login(username, password)
-            .then(
-                user => {
-                    dispatch(success(user));
-                    history.push('/');
-                },
-                error => {
-                    dispatch(failure(error));
-                    dispatch(alertActions.error(error));
-                }
-            );
+        dispatch(request({ username }));
+        firebaseAuth().onAuthStateChanged(user => {
+          if(user){
+              dispatch(success(user));
+              const userData = {
+                  id: user.uid,
+                  name: user.displayName,
+                  email: user.email
+              };
+              firebaseAuth().currentUser.getIdToken().then(res => {
+                        userData.token = res;
+                        userService.apiLogin(userData.token).then(res => {
+                                userData.id = res.id;
+                                console.log(userData);
+                                localStorage.setItem("user", JSON.stringify(userData))
+                                dispatch(success(user));
+                                history.push('/');
+                            }
+                        )
+                        // localStorage.setItem("user", JSON.stringify(userData));
+                        // dispatch(success(user));
+                        // history.push('/');
+                  }
+              );
+          }
+          else{
+              failure({
+                  type: 'alert-success',
+                  message: "Вы не Авторизованны"
+              });
+              dispatch(alertActions.error)
+          }
+        });
+
+        userService.login(username, password);
     };
 
     function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
@@ -43,17 +67,19 @@ function register(user) {
         dispatch(request(user));
 
         userService.register(user)
-            .then(
-                user => {
-                    dispatch(success());
-                    history.push('/login');
-                    dispatch(alertActions.success('Registration successful'));
-                },
-                error => {
-                    dispatch(failure(error));
-                    dispatch(alertActions.error(error));
+            .then(data => {
+                    console.log(data)
                 }
-            );
+                // user => {
+                //     dispatch(success());
+                //     history.push('/login');
+                //     dispatch(alertActions.success('Registration successful'));
+                // },
+                // error => {
+                //     dispatch(failure(error));
+                //     dispatch(alertActions.error(error));
+                // }
+            ).catch(error => {console.log(error)});
     };
 
     function request(user) { return { type: userConstants.REGISTER_REQUEST, user } }

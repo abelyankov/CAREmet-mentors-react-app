@@ -13,6 +13,7 @@ class RegisterPage extends React.Component {
                 firstName: '',
                 lastName: '',
                 username: '',
+                email: '',
                 password: ''
             },
             submitted: false
@@ -38,7 +39,8 @@ class RegisterPage extends React.Component {
 
         this.setState({ submitted: true });
         const { user } = this.state;
-        if (user.firstName && user.lastName && user.username && user.password) {
+        console.log(user);
+        if (user.firstName && user.lastName && user.username && user.password && user.email) {
             this.props.register(user);
         }
     }
@@ -75,6 +77,15 @@ class RegisterPage extends React.Component {
                                 <div className="help-block">Username is required</div>
                                 }
                             </div>
+
+                            <div className={'field' + (submitted && !user.email ? ' has-error' : '')}>
+                                <label htmlFor="username">Email</label>
+                                <input type="email" name="email" value={user.email} onChange={this.handleChange} />
+                                {submitted && !user.email &&
+                                <div className="help-block">Username is required</div>
+                                }
+                            </div>
+
                             <div className={'field' + (submitted && !user.password ? ' has-error' : '')}>
                                 <label htmlFor="password">Password</label>
                                 <input type="password" name="password" value={user.password} onChange={this.handleChange} />
@@ -103,7 +114,7 @@ function mapState(state) {
 
 const actionCreators = {
     register: userActions.register
-}
+};
 
 const connectedRegisterPage = connect(mapState, actionCreators)(RegisterPage);
 export { connectedRegisterPage as RegisterPage };

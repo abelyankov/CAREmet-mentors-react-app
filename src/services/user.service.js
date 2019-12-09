@@ -1,30 +1,39 @@
 import { authHeader } from '../helpers';
+import {firebaseAuth} from "../firebase/FireBaseConnectr";
+import {baseUrl} from "../constants/constants";
 
 export const userService = {
-    login,
+    login: firebaseLogin,
     logout,
     register,
     getAll,
     getById,
+    apiLogin,
     update,
     delete: _delete
 };
 
-function login(username, password) {
+function firebaseLogin(username, password) {
+    return firebaseAuth().signInWithEmailAndPassword(username, password)
+}
+
+function apiLogin(token) {
+    console.log(token);
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        headers: {
+            'Content-Type': 'text/plain',
+            'Authorization' : token
+        }
     };
 
-    return fetch(`/users/authenticate`, requestOptions)
-        .then(handleResponse)
-        .then(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('user', JSON.stringify(user));
+    return fetch(baseUrl + "login", {
+        method: "POST",
+        headers: {
+            'Authorization' : token
+        }
+    }).then(res => res.json())
 
-            return user;
-        });
 }
 
 function logout() {
@@ -57,7 +66,7 @@ function register(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`/users/register`, requestOptions).then(handleResponse);
+    return fetch(baseUrl + "register", requestOptions).then(res => res.json());
 }
 
 function update(user) {
@@ -81,19 +90,24 @@ function _delete(id) {
 }
 
 function handleResponse(response) {
-    return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        if (!response.ok) {
-            if (response.status === 401) {
-                // auto logout if 401 response returned from api
-                logout();
-                window.location.reload(true);
-            }
 
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
-        }
+    return response.then(res => res.json()).catch(error =>
 
-        return data;
-    });
+        error);
+
+    // return response.then(text => {
+    //     const data = text && JSON.parse(text);
+    //     if (!response.ok) {
+    //         if (response.status === 401) {
+    //             // auto logout if 401 response returned from api
+    //             logout();
+    //             window.location.reload(true);
+    //         }
+    //
+    //         const error = (data && data.message) || response.statusText;
+    //         return Promise.reject(error);
+    //     }
+    //
+    //     return data;
+    // });
 }

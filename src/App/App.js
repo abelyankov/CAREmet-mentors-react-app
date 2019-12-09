@@ -11,10 +11,12 @@ import { RegisterPage } from '../RegisterPage';
 import Reports from '../components/Reports';
 import { ProfilePage }  from "../ProfilePage";
 import MentorRequestsRoutes from "../components/MentorRequestList";
+import {firebaseAuth} from "../firebase/FireBaseConnectr";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+
 
     history.listen((location, action) => {
       // clear alert on location change

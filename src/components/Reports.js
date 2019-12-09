@@ -26,7 +26,7 @@ class Reports extends React.Component {
             })
         })
     }
-    
+
     componentDidMount() {
         this.getReports();
     }
@@ -42,7 +42,7 @@ class Reports extends React.Component {
         this.getReports()
     };
 
-    
+
     render() {
         return(
             <div>
@@ -54,7 +54,10 @@ class Reports extends React.Component {
                     <Link to={`/create`}><Button>Создать</Button></Link>
                     <h1> Отчёты </h1>
                     <div className="ui cards">
-                        {this.state.data.map(v => <ReportItem key={v._id} props={v} />)}
+                        {this.state.data.map(v => {
+                            console.log(v);
+                            return <ReportItem key={v._id} props={v} />
+                        })}
                     </div>
                 </div>
             </div>

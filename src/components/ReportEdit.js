@@ -1,18 +1,22 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
+import {baseUrl} from "../constants/constants";
+import {history} from "../helpers";
 
 
 export default class ReportEdit extends React.Component {
 
     constructor(props){
         super(props);
-
+        console.log(props.location.state);
+        const data = props.location.state.data;
         this.state = {
-            title: props.title || "",
-            status: props.status || "",
-            date: props.date || "",
-            text: props.text || "",
-            sender: props.sender || "",
-            eventTitle: props.eventTitle || ""
+            title: data.title || "",
+            status: data.status || "",
+            date: data.date || "",
+            text: data.text || "",
+            sender: data.sender || "",
+            eventTitle: data.event_title || "",
+            _id: data.id||""
         }
     }
 
@@ -54,7 +58,15 @@ export default class ReportEdit extends React.Component {
     };
 
     submitHandler = () => {
-        console.log(JSON.stringify(this.state))
+        const user = JSON.parse(localStorage.getItem("user"));
+        fetch(baseUrl + "users/" + user.id + "/reports/" +this.state._id,{
+            method: "PUT",
+            headers: {"Authorization":user.token},
+            body: JSON.stringify(this.state)
+        } ).then(res => res.json()).then(res => {
+            history.back();
+            return res
+        })
     };
 
 

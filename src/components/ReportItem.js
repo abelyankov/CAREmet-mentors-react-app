@@ -1,7 +1,7 @@
 import React from 'react'
 import {baseUrl} from "../constants/constants";
-import {history} from "../helpers";
 import {Button} from "semantic-ui-react";
+import {Link} from "react-router-dom";
 
 function ReportItem(props) {
 
@@ -23,7 +23,7 @@ function ReportItem(props) {
                 <div className="extra content">
                     <p>{sender}. {event_title}</p>
                     <div className="ui two buttons">
-                        <div className="ui basic green button">Edit</div>
+                        <Link to={{pathname:"/edit/", state: {data: props.props}}} className="ui basic green button">Edit</Link>
                         <Button onClick={(event)=> {
                             const user = JSON.parse(localStorage.getItem("user"));
                             fetch(baseUrl + "users/" + user.id + "/reports/" + _id,{

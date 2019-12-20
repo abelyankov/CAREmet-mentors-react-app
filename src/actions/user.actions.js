@@ -68,7 +68,8 @@ function register(user) {
 
         userService.register(user)
             .then(data => {
-                    console.log(data)
+                    console.log(data);
+                    history.push('/login');
                 }
                 // user => {
                 //     dispatch(success());
